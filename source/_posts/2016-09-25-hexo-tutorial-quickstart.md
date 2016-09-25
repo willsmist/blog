@@ -91,4 +91,4 @@ $ hexo server
 
 以上步骤完成后，在浏览器地址栏访问 https://<username>.github.io 就能访问刚刚建立的博客了。
 
-这篇文章只是一个 Quickstart ,更多内容请访问 Hexo 的官网。
+这篇文章只是一个 Quickstart,用来记录我的学习过程,更多内容请访问 Hexo 的官网。

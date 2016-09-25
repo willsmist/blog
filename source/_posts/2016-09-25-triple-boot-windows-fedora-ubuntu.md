@@ -39,8 +39,8 @@ Windows 是多数人最熟悉的桌面操作系统，而且很多事情对笔者
 对于具体的安装过程，笔者只是一笔带过，图形界面安装过程实在是太简单了(笔者并不会字符界面安装 Linux)。
 此时笔者笔记本电脑的状态是:
 
-* boot mode : UEFI
-* secure boot : enabled
+* Boot Mode : Legacy Support  自动禁用了 secure boot
+* Boot Priority : UEFI First
 * 硬盘分区表格式：GPT
 * 已安装操作系统：Windows 10
 
@@ -68,8 +68,8 @@ Windows 是多数人最熟悉的桌面操作系统，而且很多事情对笔者
 
 此时笔者笔记本电脑的状态是：
 
-* boot mode : UEFI
-* secure boot : disabled
+* Boot Mode : Legacy Support  自动禁用了 secure boot
+* Boot Priority : UEFI First
 * 硬盘分区表格式：GPT
 * 已安装操作系统：Windows 10, Fedora 24 & Ubuntu 16.04
 
