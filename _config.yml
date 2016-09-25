@@ -80,6 +80,8 @@ search:
   path: search.xml
   field: post
 ## Jiathis
-#jiathis: true
+jiathis: true
 ## Baidu share
-baidushare: true
+#baidushare: true
+## 多说
+duoshuo_shortname: yangguolong
