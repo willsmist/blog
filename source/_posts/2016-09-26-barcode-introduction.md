@@ -1,5 +1,5 @@
 ---
-title: 了解条形码
+title: 认识条形码
 date: 2016-09-26 23:12:26
 tags:
 - Barcode
@@ -40,7 +40,7 @@ categories:
 
 ![二维码](/images/barcode/2D.PNG "二维码")
 
-## QR code
+## QR Code
 
 目前流行的三大条形码国际标准：
 
