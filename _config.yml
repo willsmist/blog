@@ -4,8 +4,8 @@
 
 # Site
 title: YGLWY
-subtitle: 记我所想，想我所记
-description: 不可描述
+subtitle:
+description: 没有描述
 author: Will Yang
 language: zh-Hans
 timezone: Asia/Hong_Kong
@@ -76,12 +76,14 @@ deploy:
 ## the next theme avatar
 avatar: images/avatar.jpg
 ## Search
-search:
-  path: search.xml
-  field: post
+#search:
+  #path: search.xml
+  #field: post
 ## Jiathis
 jiathis: true
 ## Baidu share
 #baidushare: true
 ## 多说
 duoshuo_shortname: yangguolong
+## 百度统计
+baidu_analytics: b55919d98dffada3893dee8be5d68ac5
