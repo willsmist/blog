@@ -68,8 +68,11 @@ theme: next
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: git
-  repository: git@github.com:yourdaisy/yourdaisy.github.io.git
+- type: git
+  repo: git@github.com:yourdaisy/yourdaisy.github.io.git
+  branch: master
+- type: git
+  repo: git@git.coding.net:yourdaisy/yourdaisy.git
   branch: master
 
 # Next主题配置
