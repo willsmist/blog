@@ -1,6 +1,6 @@
 ---
 title: UEFI 安装 Windows 10,Fedora 24 & Ubuntu 16.04
-date: 2016-09-25 17:29:05
+date: 2016-09-14 17:29:05
 tags:
 - Linux
 categories:
