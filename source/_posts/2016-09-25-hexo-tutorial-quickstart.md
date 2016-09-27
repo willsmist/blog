@@ -1,5 +1,5 @@
 ---
-title: 使用 Hexo 建立个人博客
+title: Hexo 指南
 date: 2016-09-22 13:19:53
 tags:
 - Hexo
