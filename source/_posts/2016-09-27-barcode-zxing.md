@@ -1,6 +1,6 @@
 ---
 title: ZXing
-date: 2016-09-27 02:39:34
+date: 2016-09-24 02:39:34
 tags:
 - Barcode
 - 条形码
