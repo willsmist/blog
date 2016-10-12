@@ -14,6 +14,8 @@ categories:
 
 <!--more-->
 
+以下内容基于 CentOS 6.8 .
+
 ## Linux 系统的运行级别
 
 运行级别 | 含义
@@ -45,5 +47,3 @@ $ init <level>
 不建议使用 init 0 和 init 6 执行关机和重启命令,不在 root 下执行会不成功。
 
 修改 /etc/inittab ,可以使系统启动后直接进入指定的运行级别。
-
-对于 Fedora 24 /etc/inittab 文件不再使用，所作的修改也不会生效，因为 Fedora 24 使用 "targets" 来代替 "runlevel"。
