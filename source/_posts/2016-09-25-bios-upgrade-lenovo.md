@@ -1,5 +1,5 @@
 ---
-title: 联想笔记本升级 BIOS
+title: 笔记本升级 BIOS
 date: 2016-09-12 22:00:57
 tags:
 - BIOS

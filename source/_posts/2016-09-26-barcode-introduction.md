@@ -14,6 +14,7 @@ categories:
 <!--more-->
 
 ---
+
 ## 什么是条形码
 
 下面是维基百科对[条形码](https://en.wikipedia.org/wiki/Barcode)的定义：

@@ -1,5 +1,5 @@
 ---
-title: Hexo 指南
+title: Hexo
 date: 2016-09-10 13:19:53
 tags:
 - Hexo
