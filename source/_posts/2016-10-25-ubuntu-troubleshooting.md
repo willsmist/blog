@@ -1,5 +1,5 @@
 ---
-title: Ubuntu Troubleshooting
+title: Ubuntu Troubleshooting (持续更新)
 date: 2016-11-5 14:42:18
 tags:
 - Ubuntu
