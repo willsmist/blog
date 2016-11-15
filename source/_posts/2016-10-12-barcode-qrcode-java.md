@@ -11,6 +11,7 @@ categories:
 - Technique
 - Barcode
 ---
+在 Java 中使用 QRCode 提供的类生成和解析二维码。
 
 
 <!--more-->
@@ -66,6 +67,8 @@ public class QrcodeGen {
 	}
 }
 ```
+
+![](/images/barcode/qrcode.png)
 
 ## QRCode 解析
 
