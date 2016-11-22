@@ -1,5 +1,5 @@
 ---
-title: Java 应用 QRCode
+title: Java 应用 QRCode 代码示例
 date: 2016-10-18 14:57:44
 tags:
 - Barcode
