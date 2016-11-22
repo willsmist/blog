@@ -71,9 +71,9 @@ deploy:
 - type: git
   repo: git@github.com:yourdaisy/yourdaisy.github.io.git
   branch: master
-- type: git
-  repo: git@git.coding.net:yourdaisy/yourdaisy.git
-  branch: master
+# - type: git
+#  repo: git@git.coding.net:yourdaisy/yourdaisy.git
+#  branch: master
 
 # Next主题配置
 ## the next theme avatar
