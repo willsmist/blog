@@ -13,6 +13,9 @@ categories:
 
 ---
 
+### 把已有 Hexo 代码托管至 GitHub
+  参考：http://wuchong.me/blog/2014/01/17/use-github-to-manage-hexo-source/
+
 ### Markdown 语法中的引用 ">" ,不能正常显示。
   这可能是当前安装的主题造成的，换个主题试试。因为相同的 Markdown 语法在不同的主题中表现可能不一样。
 
