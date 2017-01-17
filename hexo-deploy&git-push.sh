@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd ~/Workspaces/blog
+cd ~/Workspace/blog
 
 # push files to github
 git add .
