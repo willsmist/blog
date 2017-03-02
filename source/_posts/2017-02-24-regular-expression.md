@@ -1,0 +1,89 @@
+---
+title: 正则表达式
+date: 2017-02-24 02:39:47
+tags:
+categories:
+---
+正则表达式
+<!--more-->
+---
+
+REGULAR EXPRESSIONS
+
+A  regular  expression  is  a  pattern that describes a set of strings.  Regular expressions are constructed analogously to arithmetic expressions, by using various operators to combine smaller expressions.
+
+grep understands three different versions of regular expression syntax:  “basic,”  “extended”  and  “perl.”  In  GNU grep,  there  is  no  difference  in  available
+functionality  between  basic  and  extended syntaxes.  In other implementations, basic regular expressions are less powerful.  The following description applies to
+extended regular expressions; differences for basic regular expressions are summarized afterwards.  Perl regular expressions give additional functionality, and  are
+documented in pcresyntax(3) and pcrepattern(3), but may not be available on every system.
+
+The  fundamental  building  blocks  are  the  regular  expressions  that  match  a single character.  Most characters, including all letters and digits, are regular
+expressions that match themselves.  Any meta-character with special meaning may be quoted by preceding it with a backslash.
+
+The period . matches any single character.
+
+Character Classes and Bracket Expressions
+
+A bracket expression is a list of characters enclosed by [ and ].  It matches any single character in that list; if the first character of the list is the  caret  ^
+then it matches any character not in the list.  For example, the regular expression [0123456789] matches any single digit.
+
+Within  a  bracket  expression,  a  range  expression  consists of two characters separated by a hyphen.  It matches any single character that sorts between the two
+characters, inclusive, using the locale’s collating sequence and character set.  For example, in the default C locale, [a-d] is equivalent to [abcd].  Many  locales
+sort  characters in dictionary order, and in these locales [a-d] is typically not equivalent to [abcd]; it might be equivalent to [aBbCcDd], for example.  To obtain
+the traditional interpretation of bracket expressions, you can use the C locale by setting the LC_ALL environment variable to the value C.
+
+Finally, certain named classes of characters are predefined within bracket expressions, as follows.  Their names are  self  explanatory,  and  they  are  [:alnum:],
+[:alpha:],  [:cntrl:],  [:digit:],  [:graph:],  [:lower:], [:print:], [:punct:], [:space:], [:upper:], and [:xdigit:].  For example, [[:alnum:]] means the character
+class of numbers and letters in the current locale. In the C locale and ASCII character set encoding, this is the same as [0-9A-Za-z].  (Note that the  brackets  in
+these  class  names  are part of the symbolic names, and must be included in addition to the brackets delimiting the bracket expression.)  Most meta-characters lose
+their special meaning inside bracket expressions.  To include a literal ] place it first in the list.  Similarly, to include a  literal  ^  place  it  anywhere  but
+first.  Finally, to include a literal - place it last.
+
+Anchoring
+
+The caret ^ and the dollar sign $ are meta-characters that respectively match the empty string at the beginning and end of a line.
+
+The Backslash Character and Special Expressions
+
+<span>The  symbols \< and \> respectively match the empty string at the beginning and end of a word.  The symbol \b matches the empty string at the edge of a word, and \B</span>
+matches the empty string provided it’s not at the edge of a word.  The symbol \w is a synonym for [_[:alnum:]] and \W is a synonym for [^_[:alnum:]].
+
+Repetition
+
+A regular expression may be followed by one of several repetition operators:
+?      The preceding item is optional and matched at most once.
+<span>*      The preceding item will be matched zero or more times.</span>
+<span>+      The preceding item will be matched one or more times.</span>
+{n}    The preceding item is matched exactly n times.
+{n,}   The preceding item is matched n or more times.
+{,m}   The preceding item is matched at most m times.  This is a GNU extension.
+{n,m}  The preceding item is matched at least n times, but not more than m times.
+
+Concatenation
+
+Two regular expressions may be concatenated; the resulting regular expression matches any string formed by concatenating two substrings that respectively match  the
+concatenated expressions.
+
+Alternation
+
+Two regular expressions may be joined by the infix operator |; the resulting regular expression matches any string matching either alternate expression.
+
+Precedence
+
+Repetition  takes  precedence  over  concatenation,  which in turn takes precedence over alternation.  A whole expression may be enclosed in parentheses to override
+these precedence rules and form a subexpression.
+
+Back References and Subexpressions
+
+The back-reference \n, where n is a single digit, matches the substring previously matched by the nth parenthesized subexpression of the regular expression.
+
+Basic vs Extended Regular Expressions
+
+In basic regular expressions the meta-characters ?, +, {, |, (, and ) lose their special meaning; instead use the backslashed versions \?, \+, \{, \|, \(, and \).
+
+Traditional egrep did not support the { meta-character, and some egrep implementations support \{ instead, so portable scripts should avoid {  in  grep -E  patterns
+and should use [{] to match a literal {.
+
+GNU grep -E attempts to support traditional usage by assuming that { is not special if it would be the start of an invalid interval specification.  For example, the
+command grep -E ’{1’ searches for the two-character string {1 instead of reporting a syntax error in the regular expression.   POSIX  allows  this  behavior  as  an
+extension, but portable scripts should avoid it.

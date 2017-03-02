@@ -79,8 +79,8 @@ deploy:
 ## the next theme avatar
 avatar: images/avatar.jpg
 ## Jiathis
-jiathis: true
+#jiathis: true
 ## 多说评论
-duoshuo_shortname: yangguolong
+# duoshuo_shortname: yangguolong
 ## 百度统计
-baidu_analytics: b55919d98dffada3893dee8be5d68ac5
+#baidu_analytics: b55919d98dffada3893dee8be5d68ac5
