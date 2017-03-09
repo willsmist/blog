@@ -40,7 +40,7 @@ ISO 文件在下载过程中，可能会发生错误，尽管下载工具没有�
 iso 文件放在同一目录下。然后打开 Windows 命令行工具并切换到它们所在的目录，输入命令：
 
 ```
-D:\Downloads>sha256sum.exe CentOS-6.5-x86_64-minimal.iso
+D:\Downloads>sha256sum.exe -c sha256sum.txt
 ```
 
 使用文件夹编辑器打开文件 sha256sum.txt.asc，将以上命令输出的哈希值与此文件中相应 iso 的哈希值进行比对，如果不一致就重新下载 CentOS ISO 文件。
@@ -87,7 +87,7 @@ D:\Downloads>sha256sum.exe CentOS-6.5-x86_64-minimal.iso
 * Root Password - \*\*\*  
 Confirm - \*\*\*
 
-* **What type of installation would you like? - Use All Space**
+* **What type of installation would you like? - Use All Space**(第一次安装时必须选择 All Space 才能启动系统；然而第二次安装时自定义分区也能成功)
 
 * Install boot loader on /dev/sda - <First sector of boot partition - /dev/sdb1>
 
