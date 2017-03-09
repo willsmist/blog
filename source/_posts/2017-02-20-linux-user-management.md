@@ -1,5 +1,5 @@
 ---
-title: Linux 用户管理
+title: Linux 用户管理命令
 date: 2017-02-20 20:45:55
 tags:
 categories:
@@ -464,8 +464,7 @@ OPTIONS
            The group ownership of files outside of the user´s home directory must be fixed manually.
 
        -G, --groups GROUP1[,GROUP2,...[,GROUPN]]]
-           A list of supplementary groups which the user is also a member of. Each group is separated from the next by a comma, with no intervening whitespace. The groups
-           are subject to the same restrictions as the group given with the -g option.
+           A list of supplementary groups which the user is also a member of. Each group is separated from the next by a comma, with no intervening whitespace. The groups are subject to the same restrictions as the group given with the -g option.
 
            If the user is currently a member of a group which is not listed, the user will be removed from the group. This behaviour can be changed via the -a option,
            which appends the user to the current supplementary group list.
