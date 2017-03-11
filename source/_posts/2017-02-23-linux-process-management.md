@@ -1,5 +1,5 @@
 ---
-title: Linux Process
+title: Linux 进程管理命令
 date: 2017-02-23 04:36:09
 tags:
 categories:
@@ -437,7 +437,7 @@ Run  COMMAND  with  an adjusted niceness, which affects process scheduling.  Wit
 
 NOTE: your shell may have its own version of nice, which usually supersedes the version described here.  Please refer to  your  shell’s  documentation  for  details about the options it supports.
 
-## 后台进程
+## 后台进程管理
 
 jobs
 fg
