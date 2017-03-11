@@ -1,5 +1,5 @@
 ---
-title: mysql-installation-simple(未解决)
+title: 使用二进制包安装 MySQL (未解决)
 date: 2017-03-03 23:21:26
 tags:
 categories:
