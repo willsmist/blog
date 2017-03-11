@@ -59,6 +59,9 @@ share	| Miscellaneous support files, including error messages, sample configurat
 对于 5.7.17 版本，文件 my-default.cnf 位于 MYSQL_INSTALLATION_DIR/support-files目录下。
 如果需要 my.cnf ，可从该目录下获得模板文件。
 
+>Default options are read from the following files in the given order:
+/etc/my.cnf /etc/mysql/my.cnf /usr/local/mysql/etc/my.cnf ~/.my.cnf 
+
 ```
 shell> groupadd mysql
 shell> useradd -r -g mysql -s /bin/false mysql
