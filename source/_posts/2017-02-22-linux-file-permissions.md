@@ -1,5 +1,5 @@
 ---
-title: Linux 文件权限
+title: Linux 文件权限命令
 date: 2017-02-22 00:06:36
 tags:
 categories:

@@ -10,6 +10,24 @@ categories:
 
 ---
 
+## 定时任务
+
+at
+
+cron
+
+## 磁盘
+
+
+du
+
+df
+
+fdisk
+
+
+## 资源信息
+
 vmstat
 
 dmesg
