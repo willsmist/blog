@@ -1,8 +1,11 @@
 ---
-title: Linux 进程管理命令
-date: 2017-02-23 04:36:09
+title: Linux 进程管理
+date: 2017-02-23 22:36:09
 tags:
+- Linux
 categories:
+- Technique
+- Linux
 ---
 
 Linux 进程学习笔记
@@ -11,11 +14,11 @@ Linux 进程学习笔记
 
 ---
 
-## Linux Process
+# Linux Process
 
 Processes carry out tasks within the operating system. A program is a set of machine code instructions and data stored in an executable image on disk and is, as such, a passive entity; a process can be thought of as a computer program in action.
 
-### State
+## State
 
 As a process executes it changes state according to its circumstances. Linux processes have the following states:
 

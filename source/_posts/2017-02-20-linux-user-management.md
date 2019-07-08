@@ -1,22 +1,26 @@
 ---
-title: Linux 用户管理命令
+title: Linux 用户管理
 date: 2017-02-20 20:45:55
 tags:
+- Linux
 categories:
+- Technique
+- Linux
 ---
 
-note +manual.
+note + manual.
 <!--more-->
 
 ---
 
+# 与用户管理相关的文件
+
 用户：使用操作系统的人
 用户组：具有相同系统权限的一组用户
 
+文件 `/etc/group` 存储当前系统中所有用户组信息，每一行对应一个用户组的信息，每一行都是被3个冒号分成4部分
 
-文件 /etc/group 存储当前系统中所有用户组信息，每一行对应一个用户组的信息，每一行都是被3个冒号分成4部分
-
-```
+```text
 root:x:0:
 bin:x:1:bin,daemon
 daemon:x:2:bin,daemon
@@ -32,17 +36,17 @@ ygl:x:500:
 [users_list] 为空不表示没有用户，当该用户组只有一个用户并且用户名和用户组名相同时可以在[users_list]中省略
 
 下面几点是所有 Linux 都具备的
+
 * Linux 中，root 用户组 ID 一定是0
 * 1-499 是系统预留 ID ，用于安装在系统中的软件和服务，把未被使用的最小 ID 分配给最早安装的软件和服务
 * 用户手动创建的用户组 ID 是从 500 开始的，并把大于等于 500 的未使用的最小的 ID 分配给新创建的用户组
 * 组密码占位符无一例外全用 x 表示
 
-
-文件 /etc/gshadow 存储当前系统中用户组的密码信息
+文件 `/etc/gshadow` 存储当前系统中用户组的密码信息
 
 /etc/group 有多少行，/etc/gshadow 就有多少行,一一对应，每一行也是被3个冒号分成4部分
 
-```
+```text
 root:::
 bin:::bin,daemon
 daemon:::bin,daemon
@@ -59,12 +63,11 @@ ygl:!::
 * 组管理者为空表示没有管理者，组内所有用户都可以对该用户组进行管理
 * 组用户名列表与 /etc/group 一致
 
-
-文件 /etc/passwd 存储当前系统中所有用户的信息
+文件 `/etc/passwd` 存储当前系统中所有用户的信息
 
 每一行对应一个用户的信息，每一行用冒号分成了 7 部分，分别表示 [用户名]:[密码占位符]:[用户ID]:[用户组ID]:[用户注释信息]:[用户主目录]:[shell类型]
 
-```
+```text
 root:x:0:0:root:/root:/bin/bash
 bin:x:1:1:bin:/bin:/sbin/nologin
 daemon:x:2:2:daemon:/sbin:/sbin/nologin
@@ -79,12 +82,11 @@ ygl:x:500:500::/home/ygl:/bin/bash
 
 * 超级管理员 root 用户ID一定是 0
 
-
-文件 /etc/shadow 存储当前系统中所有用户的密码信息
+文件 `/etc/shadow` 存储当前系统中所有用户的密码信息
 
 ~~每一行用冒号分成了 7 部分(并不是7部分啊，我的系统是8个冒号分成9部分)~~
 
-```
+```text
 root:$6$5K3LdG0C0GbJpYhV$p9BDmiqHNd6Y1TfTlRkP7zZ4Vs76rLOxbCY5cu6CQH/QQi7v8YiMCj0T4esCdpThD/gWc/9GZcNiJHY.gHiG/1:17217:0:99999:7:::
 bin:*:15980:0:99999:7:::
 daemon:*:15980:0:99999:7:::
@@ -97,19 +99,17 @@ ygl:$6$F5nfqxd4$3WSsNmUgEjDJmeiuHuOOCgLaTZbl.t3639p2MauIzzutJ/fBGvM3qUB4ivog0THs
 
 其中的密码是真实密码，使用单向加密的方式进行了加密
 
-
 Linux 早期系统只有 /etc/group 和 /etc/passwd ，密码也是保存在这两个文件。由于这两个文件经常被读取判断用户属于哪个用户组之类的问题，这两个文件的权限不能太苛刻，而密码又是敏感信息，密码信息与之放在一起会不安全，所以增加了 /etc/gshadow 和 /etc/shadow 用于存储密码信息。
-
 
 删除用户组之前必须先删除该组内的用户，否则用户信息中的用户组信息就无法对应，后续的使用上就会受到权限上的影响。
 
-
-## 组命令
+# 组命令
 
 groupadd  groupmod  groupdel gpasswd newgrp
 
-### groupadd
-```
+## groupadd
+
+```text
 NAME
        groupadd - create a new group
 
@@ -162,9 +162,9 @@ OPTIONS
            Apply changes in the CHROOT_DIR directory and use the configuration files from the CHROOT_DIR directory.
 ```
 
-### groupmod
+## groupmod
 
-```  
+```text
 NAME
        groupmod - modify a group definition on the system
 
@@ -205,12 +205,12 @@ OPTIONS
            You should make sure the password respects the system´s password policy.
 
        -R, --root CHROOT_DIR
-           Apply changes in the CHROOT_DIR directory and use the configuration files from the CHROOT_DIR directory.  
+           Apply changes in the CHROOT_DIR directory and use the configuration files from the CHROOT_DIR directory.
 ```
 
-### groupdel
+## groupdel
 
-```
+```text
 NAME
        groupdel - delete a group
 
@@ -230,14 +230,90 @@ OPTIONS
            Apply changes in the CHROOT_DIR directory and use the configuration files from the CHROOT_DIR directory.
 ```
 
+## gpasswd 修改组密码
 
-## 用户命令
+```text
+NAME
+       gpasswd - administer /etc/group and /etc/gshadow
+
+SYNOPSIS
+       gpasswd [option] group
+
+DESCRIPTION
+       The gpasswd command is used to administer /etc/group, and /etc/gshadow. Every group can have administrators, members and a password.
+
+       System administrators can use the -A option to define group administrator(s) and the -M option to define members. They have all rights of group administrators and
+       members.
+
+       gpasswd called by a group administrator with a group name only prompts for the new password of the group.
+
+       If a password is set the members can still use newgrp(1) without a password, and non-members must supply the password.
+
+   Notes about group passwords
+       Group passwords are an inherent security problem since more than one person is permitted to know the password. However, groups are a useful tool for permitting
+       co-operation between different users.
+
+OPTIONS
+       Except for the -A and -M options, the options cannot be combined.
+
+       The options which apply to the gpasswd command are:
+
+       -a, --add user
+           Add the user to the named group.
+
+       -d, --delete user
+           Remove the user from the named group.
+
+       -h, --help
+           Display help message and exit.
+
+       -Q, --root CHROOT_DIR
+           Apply changes in the CHROOT_DIR directory and use the configuration files from the CHROOT_DIR directory.
+
+       -r, --remove-password
+           Remove the password from the named group. The group password will be empty. Only group members will be allowed to use newgrp to join the named group.
+
+       -R, --restrict
+           Restrict the access to the named group. The group password is set to "!". Only group members with a password will be allowed to use newgrp to join the named
+           group.
+
+       -A, --administrators user,...
+           Set the list of administrative users.
+
+       -M, --members user,...
+           Set the list of group members.
+```
+
+### newgrp
+
+```text
+NAME
+       newgrp - log in to a new group
+
+SYNOPSIS
+       newgrp [-] [group]
+
+DESCRIPTION
+       The newgrp command is used to change the current group ID during a login session. If the optional - flag is given, the user´s environment will be reinitialized as
+       though the user had logged in, otherwise the current environment, including current working directory, remains unchanged.
+
+       newgrp changes the current real group ID to the named group, or to the default group listed in /etc/passwd if no group name is given.  newgrp also tries to add the
+       group to the user groupset. If not root, the user will be prompted for a password if she does not have a password (in /etc/shadow if this user has an entry in the
+       shadowed password file, or in /etc/passwd otherwise) and the group does, or if the user is not listed as a member and the group has a password. The user will be
+       denied access if the group password is empty and the user is not listed as a member.
+
+       If there is an entry for this group in /etc/gshadow, then the list of members and the password of this group will be taken from this file, otherwise, the entry in
+       /etc/group is considered.
+
+```
+
+# 用户命令
 
 useradd  usermod  userdel  passwd
 
-### useradd
+## useradd
 
-```
+```text
 NAME
        useradd - create a new user or update default new user information
 
@@ -320,13 +396,11 @@ OPTIONS
            By default, the user´s entries in the lastlog and faillog databases are resetted to avoid reusing the entry from a previously deleted user.
 
        -m, --create-home
-           Create the user´s home directory if it does not exist. The files and directories contained in the skeleton directory (which can be defined with the -k option)
-           will be copied to the home directory.
+           Create the user´s home directory if it does not exist. The files and directories contained in the skeleton directory (which can be defined with the -k option) will be copied to the home directory.
 
            By default, if this option is not specified and CREATE_HOME is not enabled, no home directories are created.
 
-           The directory where the user´s home directory is created must exist and have proper SELinux context and permissions. Otherwise the user´s home directory cannot
-           be created or accessed.
+           The directory where the user´s home directory is created must exist and have proper SELinux context and permissions. Otherwise the user´s home directory cannot be created or accessed.
 
        -M, --no-create-home
            Do not create the user´s home directory, even if the system wide setting from /etc/login.defs (CREATE_HOME) is set to yes.
@@ -351,7 +425,7 @@ OPTIONS
        -r, --system
            Create a system account.
 
-           System users will be created with no aging information in /etc/shadow, and their numeric identifiers are chosen in the SYS_UID_MIN-SYS_UID_MAX range, defined in
+           System users will be created with no aging(老化，时效) information in /etc/shadow, and their numeric identifiers are chosen in the SYS_UID_MIN-SYS_UID_MAX range, defined in
            /etc/login.defs, instead of UID_MIN-UID_MAX (and their GID counterparts for the creation of groups).
 
            Note that useradd will not create a home directory for such an user, regardless of the default setting in /etc/login.defs (CREATE_HOME). You have to specify the
@@ -414,10 +488,9 @@ NOTES
        /etc/default/useradd or on the command line).
 ```
 
+## usermod
 
-### usermod
-
-```
+```text
 NAME
        usermod - modify a user account
 
@@ -530,10 +603,9 @@ OPTIONS
 
 ***If the user is currently a member of a group which is not listed, the user will be removed from the group. This behaviour can be changed via the -a option,which appends the user to the current supplementary group list.***
 
+## userdel
 
-### userdel
-
-```
+```text
 NAME
        userdel - delete a user account and related files
 
@@ -570,10 +642,9 @@ OPTIONS
            Remove any SELinux user mapping for the user´s login.
 ```
 
-
 ## passwd 修改用户密码
 
-```
+```text
 NAME
        passwd - update user’s authentication tokens
 
@@ -648,87 +719,9 @@ Remember the following two principles
        These principles are partially enforced by the system, but only partly so.  Vigilence on your part will make the system much more secure.
 ```
 
-### gpasswd 修改组密码
+# su
 
-```
-NAME
-       gpasswd - administer /etc/group and /etc/gshadow
-
-SYNOPSIS
-       gpasswd [option] group
-
-DESCRIPTION
-       The gpasswd command is used to administer /etc/group, and /etc/gshadow. Every group can have administrators, members and a password.
-
-       System administrators can use the -A option to define group administrator(s) and the -M option to define members. They have all rights of group administrators and
-       members.
-
-       gpasswd called by a group administrator with a group name only prompts for the new password of the group.
-
-       If a password is set the members can still use newgrp(1) without a password, and non-members must supply the password.
-
-   Notes about group passwords
-       Group passwords are an inherent security problem since more than one person is permitted to know the password. However, groups are a useful tool for permitting
-       co-operation between different users.
-
-OPTIONS
-       Except for the -A and -M options, the options cannot be combined.
-
-       The options which apply to the gpasswd command are:
-
-       -a, --add user
-           Add the user to the named group.
-
-       -d, --delete user
-           Remove the user from the named group.
-
-       -h, --help
-           Display help message and exit.
-
-       -Q, --root CHROOT_DIR
-           Apply changes in the CHROOT_DIR directory and use the configuration files from the CHROOT_DIR directory.
-
-       -r, --remove-password
-           Remove the password from the named group. The group password will be empty. Only group members will be allowed to use newgrp to join the named group.
-
-       -R, --restrict
-           Restrict the access to the named group. The group password is set to "!". Only group members with a password will be allowed to use newgrp to join the named
-           group.
-
-       -A, --administrators user,...
-           Set the list of administrative users.
-
-       -M, --members user,...
-           Set the list of group members.
-```
-
-
-### newgrp
-
-```
-NAME
-       newgrp - log in to a new group
-
-SYNOPSIS
-       newgrp [-] [group]
-
-DESCRIPTION
-       The newgrp command is used to change the current group ID during a login session. If the optional - flag is given, the user´s environment will be reinitialized as
-       though the user had logged in, otherwise the current environment, including current working directory, remains unchanged.
-
-       newgrp changes the current real group ID to the named group, or to the default group listed in /etc/passwd if no group name is given.  newgrp also tries to add the
-       group to the user groupset. If not root, the user will be prompted for a password if she does not have a password (in /etc/shadow if this user has an entry in the
-       shadowed password file, or in /etc/passwd otherwise) and the group does, or if the user is not listed as a member and the group has a password. The user will be
-       denied access if the group password is empty and the user is not listed as a member.
-
-       If there is an entry for this group in /etc/gshadow, then the list of members and the password of this group will be taken from this file, otherwise, the entry in
-       /etc/group is considered.
-
-```
-
-### su
-
-```
+```text
 NAME
        su - run a shell with substitute user and group IDs
 
@@ -766,19 +759,19 @@ DESCRIPTION
        A mere - implies -l.   If USER not given, assume root.
 ```
 
-### 禁止普通用户登录
+# 禁止普通用户登录
 
-```
+```terminal
 # touch /etc/nologin
 ```
 
 这样就可以禁止除了 root 用户以外的用户登录
 
-## user 和 group 进阶命令
+# user 和 group 进阶命令
 
-### 锁定用户
+## 锁定用户
 
-```
+```bash
 # passwd -l username
 ```
 
@@ -786,17 +779,16 @@ DESCRIPTION
 
   passwd 在加密后密码字符串前加了两个!， 而 usermod 只加一个!，但可以都执行一次来互相解锁。usermod -U 执行一次就可以解锁 passwd -l 锁定的账户。
 
-### 主要组和附属组
+## 主要组和附属组
 
-
-```
+```bash
 # gpasswd -a cls boss
 Adding user cls to group boss
 ```
 
 boss 将作为 cls 的附属组
 
-```
+```bash
 $ newgrp boss #切换到 boss 用户组
 
 # gpasswd -d cls boss
@@ -805,14 +797,13 @@ $ newgrp boss #切换到 boss 用户组
 ~~若附属组设置了密码，命令 newgrp group 需要输入附属组密码。(都是这个组的人了就不需要密码了)~~
 经测试使用 ```newgrp group``` 切换到用户不属于的用户组(既不是主要组也不是附属组)才需要密码
 
-### 切换到其他账户
+## 切换到其他账户
 
 su(substitute user)
 
 su username
 
-
-### 其他命令
+# 其他命令
 
 * whoami
 

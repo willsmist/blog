@@ -1,8 +1,13 @@
 ---
-title: svn-installation
-date: 2017-03-12 07:45:22
+title: SVN 编译安装
+date: 2017-03-12 00:45:22
 tags:
+- Subversion
+- SVN
+- VCS
 categories:
+- Technique
+- SVN
 ---
 subversion 安装
 
