@@ -37,7 +37,7 @@ The file type, technically not part of its permissions. See  info ls -n "What in
 
 可以看到文件权限是由3个三元组(e.g. rwx)组成的，每个三元组可以有下表所示的字符组成：
 
-![File-Permissons-Characters](/images/file-perms.PNG)
+![File-Permissons-Characters](https://i.ibb.co/Pt0YZ83/file-perms.png" alt="file-perms)
 
 正如上面表格 *File-Permissons-Characters* 所示，权限对普通文件和目录有不同的影响。
 

@@ -21,7 +21,7 @@ categories:
 
 # ZXing 是什么
 
-![](/images/barcode/zxing-horse.png)
+![](https://i.ibb.co/smVqtqW/zxing-horse.png)
 
 [**ZXing**](https://github.com/zxing/zxing) ("Zebra Crossing") 是一个开源并支持多种格式的一维/二维条形码图像处理类库，基于 Java 实现。
 
@@ -78,7 +78,7 @@ public class CreateQRCode {
 
 执行的结果如下，扫描即可访问本博客。
 
-![](/images/barcode/will.png)
+![](https://i.ibb.co/zrg0Vdx/will.png)
 
 除了定义所需的参数外，生成条形码的代码只需要调用 MultiFormatWriter 的 encode 方法。
 
