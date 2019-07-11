@@ -39,6 +39,6 @@ categories:
 </script>
 ```
 
-![](/images/barcode/jquery-qrcode.png)
+![](https://i.ibb.co/4mGY7JT/jquery-qrcode.png)
 
 需要注意的是在本例中生成二维码的 JavaScript 代码要放在 `div` 的后面。

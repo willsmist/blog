@@ -145,7 +145,7 @@ FTP 接收端口号：21
 
 ### 数据封装过程
 
-![](/images/network/datagram.jpg)
+![](https://i.ibb.co/Jj2pJbj/datagram.jpg)
 
 
 ## IP

@@ -36,13 +36,13 @@ categories:
 
 第一代，一维的条码是由线条和空间的宽度创建特定的模式
 
-![线型条形码](/images/barcode/1D.PNG "线型条形码")
+![线型条形码](https://i.ibb.co/nkk6GkS/1D.png "线型条形码")
 
 ## 矩阵条形码
 
 矩阵码，也被称为二维条形码或二维码(2-dimensional barcode)，是用特定的几何图形按照一定规则在平面（二维方向）分布的黑白相间的图形记录数据符号信息的图形。
 
-![二维码](/images/barcode/2D.PNG "二维码")
+![二维码](https://i.ibb.co/TB7zgnV/2D.png "二维码")
 
 目前流行的二维码国际标准：
 

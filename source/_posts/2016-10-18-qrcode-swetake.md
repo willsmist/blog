@@ -69,7 +69,7 @@ public class QrcodeGen {
 }
 ```
 
-![](/images/barcode/qrcode.png)
+![](<https://i.ibb.co/V3fFZqm/qrcode.png)
 
 # 解析 QR Code
 
