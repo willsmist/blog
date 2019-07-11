@@ -93,3 +93,10 @@ avatar: images/avatar.jpg
 # duoshuo_shortname: yangguolong
 ## 百度统计
 #baidu_analytics: b55919d98dffada3893dee8be5d68ac5
+
+# mermaid chart
+mermaid: ## mermaid url https://github.com/knsv/mermaid
+  enable: true  # default true
+  version: "7.1.2" # default v7.1.2
+  options:  # find more api options from https://github.com/knsv/mermaid/blob/master/src/mermaidAPI.js
+    #startOnload: true  // default true
